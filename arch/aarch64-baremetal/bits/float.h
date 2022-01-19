@@ -1,1 +1,6 @@
 #define LDBL_MANT_DIG __LDBL_MANT_DIG__
+#define LDBL_MAX_EXP __LDBL_MAX_EXP__
+#define LDBL_MAX __LDBL_MAX__
+#define LDBL_MIN __LDBL_MIN__
+#define LDBL_EPSILON __LDBL_EPSILON__
+#define LDBL_MIN_EXP __LDBL_MIN_EXP__

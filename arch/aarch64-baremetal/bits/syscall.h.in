@@ -1,1 +1,597 @@
+#define SYS_io_setup SYS_IMP_io_setup
+#define SYS_io_destroy SYS_IMP_io_destroy
+#define SYS_io_submit SYS_IMP_io_submit
+#define SYS_io_cancel SYS_IMP_io_cancel
+#define SYS_io_getevents SYS_IMP_io_getevents
+#define SYS_setxattr SYS_IMP_setxattr
+#define SYS_lsetxattr SYS_IMP_lsetxattr
+#define SYS_fsetxattr SYS_IMP_fsetxattr
+#define SYS_getxattr SYS_IMP_getxattr
+#define SYS_lgetxattr SYS_IMP_lgetxattr
+#define SYS_fgetxattr SYS_IMP_fgetxattr
+#define SYS_listxattr SYS_IMP_listxattr
+#define SYS_llistxattr SYS_IMP_llistxattr
+#define SYS_flistxattr SYS_IMP_flistxattr
+#define SYS_removexattr SYS_IMP_removexattr
+#define SYS_lremovexattr SYS_IMP_lremovexattr
+#define SYS_fremovexattr SYS_IMP_fremovexattr
+#define SYS_getcwd SYS_IMP_getcwd
+#define SYS_lookup_dcookie SYS_IMP_lookup_dcookie
+#define SYS_eventfd2 SYS_IMP_eventfd2
+#define SYS_epoll_create1 SYS_IMP_epoll_create1
+#define SYS_epoll_ctl SYS_IMP_epoll_ctl
+#define SYS_epoll_pwait SYS_IMP_epoll_pwait
+#define SYS_dup SYS_IMP_dup
+#define SYS_dup3 SYS_IMP_dup3
+#define SYS_fcntl SYS_IMP_fcntl
+#define SYS_inotify_init1 SYS_IMP_inotify_init1
+#define SYS_inotify_add_watch SYS_IMP_inotify_add_watch
+#define SYS_inotify_rm_watch SYS_IMP_inotify_rm_watch
+#define SYS_ioctl SYS_IMP_ioctl
+#define SYS_ioprio_set SYS_IMP_ioprio_set
+#define SYS_ioprio_get SYS_IMP_ioprio_get
+#define SYS_flock SYS_IMP_flock
+#define SYS_mknodat SYS_IMP_mknodat
+#define SYS_mkdirat SYS_IMP_mkdirat
+#define SYS_unlinkat SYS_IMP_unlinkat
+#define SYS_symlinkat SYS_IMP_symlinkat
+#define SYS_linkat SYS_IMP_linkat
+#define SYS_renameat SYS_IMP_renameat
+#define SYS_umount2 SYS_IMP_umount2
+#define SYS_mount SYS_IMP_mount
+#define SYS_pivot_root SYS_IMP_pivot_root
+#define SYS_nfsservctl SYS_IMP_nfsservctl
+#define SYS_statfs SYS_IMP_statfs
+#define SYS_fstatfs SYS_IMP_fstatfs
+#define SYS_truncate SYS_IMP_truncate
+#define SYS_ftruncate SYS_IMP_ftruncate
+#define SYS_fallocate SYS_IMP_fallocate
+#define SYS_faccessat SYS_IMP_faccessat
+#define SYS_chdir SYS_IMP_chdir
+#define SYS_fchdir SYS_IMP_fchdir
+#define SYS_chroot SYS_IMP_chroot
+#define SYS_fchmod SYS_IMP_fchmod
+#define SYS_fchmodat SYS_IMP_fchmodat
+#define SYS_fchownat SYS_IMP_fchownat
+#define SYS_fchown SYS_IMP_fchown
+#define SYS_openat SYS_IMP_openat
+#define SYS_close SYS_IMP_close
+#define SYS_vhangup SYS_IMP_vhangup
+#define SYS_pipe2 SYS_IMP_pipe2
+#define SYS_quotactl SYS_IMP_quotactl
+#define SYS_getdents64 SYS_IMP_getdents64
+#define SYS_lseek SYS_IMP_lseek
+#define SYS_read SYS_IMP_read
+#define SYS_write SYS_IMP_write
+#define SYS_readv SYS_IMP_readv
+#define SYS_writev SYS_IMP_writev
+#define SYS_pread64 SYS_IMP_pread64
+#define SYS_pwrite64 SYS_IMP_pwrite64
+#define SYS_preadv SYS_IMP_preadv
+#define SYS_pwritev SYS_IMP_pwritev
+#define SYS_sendfile SYS_IMP_sendfile
+#define SYS_pselect6 SYS_IMP_pselect6
+#define SYS_ppoll SYS_IMP_ppoll
+#define SYS_signalfd4 SYS_IMP_signalfd4
+#define SYS_vmsplice SYS_IMP_vmsplice
+#define SYS_splice SYS_IMP_splice
+#define SYS_tee SYS_IMP_tee
+#define SYS_readlinkat SYS_IMP_readlinkat
+#define SYS_newfstatat SYS_IMP_newfstatat
+#define SYS_fstat SYS_IMP_fstat
+#define SYS_sync SYS_IMP_sync
+#define SYS_fsync SYS_IMP_fsync
+#define SYS_fdatasync SYS_IMP_fdatasync
+#define SYS_sync_file_range SYS_IMP_sync_file_range
+#define SYS_timerfd_create SYS_IMP_timerfd_create
+#define SYS_timerfd_settime SYS_IMP_timerfd_settime
+#define SYS_timerfd_gettime SYS_IMP_timerfd_gettime
+#define SYS_utimensat SYS_IMP_utimensat
+#define SYS_acct SYS_IMP_acct
+#define SYS_capget SYS_IMP_capget
+#define SYS_capset SYS_IMP_capset
+#define SYS_personality SYS_IMP_personality
+#define SYS_exit SYS_IMP_exit
+#define SYS_exit_group SYS_IMP_exit_group
+#define SYS_waitid SYS_IMP_waitid
+#define SYS_set_tid_address SYS_IMP_set_tid_address
+#define SYS_unshare SYS_IMP_unshare
+#define SYS_futex SYS_IMP_futex
+#define SYS_set_robust_list SYS_IMP_set_robust_list
+#define SYS_get_robust_list SYS_IMP_get_robust_list
+#define SYS_nanosleep SYS_IMP_nanosleep
+#define SYS_getitimer SYS_IMP_getitimer
+#define SYS_setitimer SYS_IMP_setitimer
+#define SYS_kexec_load SYS_IMP_kexec_load
+#define SYS_init_module SYS_IMP_init_module
+#define SYS_delete_module SYS_IMP_delete_module
+#define SYS_timer_create SYS_IMP_timer_create
+#define SYS_timer_gettime SYS_IMP_timer_gettime
+#define SYS_timer_getoverrun SYS_IMP_timer_getoverrun
+#define SYS_timer_settime SYS_IMP_timer_settime
+#define SYS_timer_delete SYS_IMP_timer_delete
+#define SYS_clock_settime SYS_IMP_clock_settime
+#define SYS_clock_gettime SYS_IMP_clock_gettime
+#define SYS_clock_getres SYS_IMP_clock_getres
+#define SYS_clock_nanosleep SYS_IMP_clock_nanosleep
+#define SYS_syslog SYS_IMP_syslog
+#define SYS_ptrace SYS_IMP_ptrace
+#define SYS_sched_setparam SYS_IMP_sched_setparam
+#define SYS_sched_setscheduler SYS_IMP_sched_setscheduler
+#define SYS_sched_getscheduler SYS_IMP_sched_getscheduler
+#define SYS_sched_getparam SYS_IMP_sched_getparam
+#define SYS_sched_setaffinity SYS_IMP_sched_setaffinity
+#define SYS_sched_getaffinity SYS_IMP_sched_getaffinity
+#define SYS_sched_yield SYS_IMP_sched_yield
+#define SYS_sched_get_priority_max SYS_IMP_sched_get_priority_max
+#define SYS_sched_get_priority_min SYS_IMP_sched_get_priority_min
+#define SYS_sched_rr_get_interval SYS_IMP_sched_rr_get_interval
+#define SYS_restart_syscall SYS_IMP_restart_syscall
+#define SYS_kill SYS_IMP_kill
+#define SYS_tkill SYS_IMP_tkill
+#define SYS_tgkill SYS_IMP_tgkill
+#define SYS_sigaltstack SYS_IMP_sigaltstack
+#define SYS_rt_sigsuspend SYS_IMP_rt_sigsuspend
+#define SYS_rt_sigaction SYS_IMP_rt_sigaction
+#define SYS_rt_sigprocmask SYS_IMP_rt_sigprocmask
+#define SYS_rt_sigpending SYS_IMP_rt_sigpending
+#define SYS_rt_sigtimedwait SYS_IMP_rt_sigtimedwait
+#define SYS_rt_sigqueueinfo SYS_IMP_rt_sigqueueinfo
+#define SYS_rt_sigreturn SYS_IMP_rt_sigreturn
+#define SYS_setpriority SYS_IMP_setpriority
+#define SYS_getpriority SYS_IMP_getpriority
+#define SYS_reboot SYS_IMP_reboot
+#define SYS_setregid SYS_IMP_setregid
+#define SYS_setgid SYS_IMP_setgid
+#define SYS_setreuid SYS_IMP_setreuid
+#define SYS_setuid SYS_IMP_setuid
+#define SYS_setresuid SYS_IMP_setresuid
+#define SYS_getresuid SYS_IMP_getresuid
+#define SYS_setresgid SYS_IMP_setresgid
+#define SYS_getresgid SYS_IMP_getresgid
+#define SYS_setfsuid SYS_IMP_setfsuid
+#define SYS_setfsgid SYS_IMP_setfsgid
+#define SYS_times SYS_IMP_times
+#define SYS_setpgid SYS_IMP_setpgid
+#define SYS_getpgid SYS_IMP_getpgid
+#define SYS_getsid SYS_IMP_getsid
+#define SYS_setsid SYS_IMP_setsid
+#define SYS_getgroups SYS_IMP_getgroups
+#define SYS_setgroups SYS_IMP_setgroups
+#define SYS_uname SYS_IMP_uname
+#define SYS_sethostname SYS_IMP_sethostname
+#define SYS_setdomainname SYS_IMP_setdomainname
+#define SYS_getrlimit SYS_IMP_getrlimit
+#define SYS_setrlimit SYS_IMP_setrlimit
+#define SYS_getrusage SYS_IMP_getrusage
+#define SYS_umask SYS_IMP_umask
+#define SYS_prctl SYS_IMP_prctl
+#define SYS_getcpu SYS_IMP_getcpu
+#define SYS_gettimeofday SYS_IMP_gettimeofday
+#define SYS_settimeofday SYS_IMP_settimeofday
+#define SYS_adjtimex SYS_IMP_adjtimex
+#define SYS_getpid SYS_IMP_getpid
+#define SYS_getppid SYS_IMP_getppid
+#define SYS_getuid SYS_IMP_getuid
+#define SYS_geteuid SYS_IMP_geteuid
+#define SYS_getgid SYS_IMP_getgid
+#define SYS_getegid SYS_IMP_getegid
+#define SYS_gettid SYS_IMP_gettid
+#define SYS_sysinfo SYS_IMP_sysinfo
+#define SYS_mq_open SYS_IMP_mq_open
+#define SYS_mq_unlink SYS_IMP_mq_unlink
+#define SYS_mq_timedsend SYS_IMP_mq_timedsend
+#define SYS_mq_timedreceive SYS_IMP_mq_timedreceive
+#define SYS_mq_notify SYS_IMP_mq_notify
+#define SYS_mq_getsetattr SYS_IMP_mq_getsetattr
+#define SYS_msgget SYS_IMP_msgget
+#define SYS_msgctl SYS_IMP_msgctl
+#define SYS_msgrcv SYS_IMP_msgrcv
+#define SYS_msgsnd SYS_IMP_msgsnd
+#define SYS_semget SYS_IMP_semget
+#define SYS_semctl SYS_IMP_semctl
+#define SYS_semtimedop SYS_IMP_semtimedop
+#define SYS_semop SYS_IMP_semop
+#define SYS_shmget SYS_IMP_shmget
+#define SYS_shmctl SYS_IMP_shmctl
+#define SYS_shmat SYS_IMP_shmat
+#define SYS_shmdt SYS_IMP_shmdt
+#define SYS_socket SYS_IMP_socket
+#define SYS_socketpair SYS_IMP_socketpair
+#define SYS_bind SYS_IMP_bind
+#define SYS_listen SYS_IMP_listen
+#define SYS_accept SYS_IMP_accept
+#define SYS_connect SYS_IMP_connect
+#define SYS_getsockname SYS_IMP_getsockname
+#define SYS_getpeername SYS_IMP_getpeername
+#define SYS_sendto SYS_IMP_sendto
+#define SYS_recvfrom SYS_IMP_recvfrom
+#define SYS_setsockopt SYS_IMP_setsockopt
+#define SYS_getsockopt SYS_IMP_getsockopt
+#define SYS_shutdown SYS_IMP_shutdown
+#define SYS_sendmsg SYS_IMP_sendmsg
+#define SYS_recvmsg SYS_IMP_recvmsg
+#define SYS_readahead SYS_IMP_readahead
+#define SYS_brk SYS_IMP_brk
+#define SYS_munmap SYS_IMP_munmap
+#define SYS_mremap SYS_IMP_mremap
+#define SYS_add_key SYS_IMP_add_key
+#define SYS_request_key SYS_IMP_request_key
+#define SYS_keyctl SYS_IMP_keyctl
+#define SYS_clone SYS_IMP_clone
+#define SYS_execve SYS_IMP_execve
+#define SYS_mmap SYS_IMP_mmap
+#define SYS_fadvise64 SYS_IMP_fadvise64
+#define SYS_swapon SYS_IMP_swapon
+#define SYS_swapoff SYS_IMP_swapoff
+#define SYS_mprotect SYS_IMP_mprotect
+#define SYS_msync SYS_IMP_msync
+#define SYS_mlock SYS_IMP_mlock
+#define SYS_munlock SYS_IMP_munlock
+#define SYS_mlockall SYS_IMP_mlockall
+#define SYS_munlockall SYS_IMP_munlockall
+#define SYS_mincore SYS_IMP_mincore
+#define SYS_madvise SYS_IMP_madvise
+#define SYS_remap_file_pages SYS_IMP_remap_file_pages
+#define SYS_mbind SYS_IMP_mbind
+#define SYS_get_mempolicy SYS_IMP_get_mempolicy
+#define SYS_set_mempolicy SYS_IMP_set_mempolicy
+#define SYS_migrate_pages SYS_IMP_migrate_pages
+#define SYS_move_pages SYS_IMP_move_pages
+#define SYS_rt_tgsigqueueinfo SYS_IMP_rt_tgsigqueueinfo
+#define SYS_perf_event_open SYS_IMP_perf_event_open
+#define SYS_accept4 SYS_IMP_accept4
+#define SYS_recvmmsg SYS_IMP_recvmmsg
+#define SYS_wait4 SYS_IMP_wait4
+#define SYS_prlimit64 SYS_IMP_prlimit64
+#define SYS_fanotify_init SYS_IMP_fanotify_init
+#define SYS_fanotify_mark SYS_IMP_fanotify_mark
+#define SYS_name_to_handle_at SYS_IMP_name_to_handle_at
+#define SYS_open_by_handle_at SYS_IMP_open_by_handle_at
+#define SYS_clock_adjtime SYS_IMP_clock_adjtime
+#define SYS_syncfs SYS_IMP_syncfs
+#define SYS_setns SYS_IMP_setns
+#define SYS_sendmmsg SYS_IMP_sendmmsg
+#define SYS_process_vm_readv SYS_IMP_process_vm_readv
+#define SYS_process_vm_writev SYS_IMP_process_vm_writev
+#define SYS_kcmp SYS_IMP_kcmp
+#define SYS_finit_module SYS_IMP_finit_module
+#define SYS_sched_setattr SYS_IMP_sched_setattr
+#define SYS_sched_getattr SYS_IMP_sched_getattr
+#define SYS_renameat2 SYS_IMP_renameat2
+#define SYS_seccomp SYS_IMP_seccomp
+#define SYS_getrandom SYS_IMP_getrandom
+#define SYS_memfd_create SYS_IMP_memfd_create
+#define SYS_bpf SYS_IMP_bpf
+#define SYS_execveat SYS_IMP_execveat
+#define SYS_userfaultfd SYS_IMP_userfaultfd
+#define SYS_membarrier SYS_IMP_membarrier
+#define SYS_mlock2 SYS_IMP_mlock2
+#define SYS_copy_file_range SYS_IMP_copy_file_range
+#define SYS_preadv2 SYS_IMP_preadv2
+#define SYS_pwritev2 SYS_IMP_pwritev2
+#define SYS_pkey_mprotect SYS_IMP_pkey_mprotect
+#define SYS_pkey_alloc SYS_IMP_pkey_alloc
+#define SYS_pkey_free SYS_IMP_pkey_free
+#define SYS_statx SYS_IMP_statx
+#define SYS_io_pgetevents SYS_IMP_io_pgetevents
+#define SYS_rseq SYS_IMP_rseq
+#define SYS_kexec_file_load SYS_IMP_kexec_file_load
+#define SYS_pidfd_send_signal SYS_IMP_pidfd_send_signal
+#define SYS_io_uring_setup SYS_IMP_io_uring_setup
+#define SYS_io_uring_enter SYS_IMP_io_uring_enter
+#define SYS_io_uring_register SYS_IMP_io_uring_register
+#define SYS_open_tree SYS_IMP_open_tree
+#define SYS_move_mount SYS_IMP_move_mount
+#define SYS_fsopen SYS_IMP_fsopen
+#define SYS_fsconfig SYS_IMP_fsconfig
+#define SYS_fsmount SYS_IMP_fsmount
+#define SYS_fspick SYS_IMP_fspick
+#define SYS_pidfd_open SYS_IMP_pidfd_open
+#define SYS_clone3 SYS_IMP_clone3
+#define SYS_close_range SYS_IMP_close_range
+#define SYS_openat2 SYS_IMP_openat2
+#define SYS_pidfd_getfd SYS_IMP_pidfd_getfd
+#define SYS_faccessat2 SYS_IMP_faccessat2
+#define SYS_process_madvise SYS_IMP_process_madvise
+
+
+
+
+void SYS_IMP_io_setup();
+void SYS_IMP_io_destroy();
+void SYS_IMP_io_submit();
+void SYS_IMP_io_cancel();
+void SYS_IMP_io_getevents();
+void SYS_IMP_setxattr();
+void SYS_IMP_lsetxattr();
+void SYS_IMP_fsetxattr();
+void SYS_IMP_getxattr();
+void SYS_IMP_lgetxattr();
+void SYS_IMP_fgetxattr();
+void SYS_IMP_listxattr();
+void SYS_IMP_llistxattr();
+void SYS_IMP_flistxattr();
+void SYS_IMP_removexattr();
+void SYS_IMP_lremovexattr();
+void SYS_IMP_fremovexattr();
+void SYS_IMP_getcwd();
+void SYS_IMP_lookup_dcookie();
+void SYS_IMP_eventfd2();
+void SYS_IMP_epoll_create1();
+void SYS_IMP_epoll_ctl();
+void SYS_IMP_epoll_pwait();
+void SYS_IMP_dup();
+void SYS_IMP_dup3();
+void SYS_IMP_fcntl();
+void SYS_IMP_inotify_init1();
+void SYS_IMP_inotify_add_watch();
+void SYS_IMP_inotify_rm_watch();
+void SYS_IMP_ioctl();
+void SYS_IMP_ioprio_set();
+void SYS_IMP_ioprio_get();
+void SYS_IMP_flock();
+void SYS_IMP_mknodat();
+void SYS_IMP_mkdirat();
+void SYS_IMP_unlinkat();
+void SYS_IMP_symlinkat();
+void SYS_IMP_linkat();
+void SYS_IMP_renameat();
+void SYS_IMP_umount2();
+void SYS_IMP_mount();
+void SYS_IMP_pivot_root();
+void SYS_IMP_nfsservctl();
+void SYS_IMP_statfs();
+void SYS_IMP_fstatfs();
+void SYS_IMP_truncate();
+void SYS_IMP_ftruncate();
+void SYS_IMP_fallocate();
+void SYS_IMP_faccessat();
+void SYS_IMP_chdir();
+void SYS_IMP_fchdir();
+void SYS_IMP_chroot();
+void SYS_IMP_fchmod();
+void SYS_IMP_fchmodat();
+void SYS_IMP_fchownat();
+void SYS_IMP_fchown();
+void SYS_IMP_openat();
+void SYS_IMP_close();
+void SYS_IMP_vhangup();
+void SYS_IMP_pipe2();
+void SYS_IMP_quotactl();
+void SYS_IMP_getdents64();
+void SYS_IMP_lseek();
+void SYS_IMP_read();
+void SYS_IMP_write();
+void SYS_IMP_readv();
+void SYS_IMP_writev();
+void SYS_IMP_pread64();
+void SYS_IMP_pwrite64();
+void SYS_IMP_preadv();
+void SYS_IMP_pwritev();
+void SYS_IMP_sendfile();
+void SYS_IMP_pselect6();
+void SYS_IMP_ppoll();
+void SYS_IMP_signalfd4();
+void SYS_IMP_vmsplice();
+void SYS_IMP_splice();
+void SYS_IMP_tee();
+void SYS_IMP_readlinkat();
+void SYS_IMP_newfstatat();
+void SYS_IMP_fstat();
+void SYS_IMP_sync();
+void SYS_IMP_fsync();
+void SYS_IMP_fdatasync();
+void SYS_IMP_sync_file_range();
+void SYS_IMP_timerfd_create();
+void SYS_IMP_timerfd_settime();
+void SYS_IMP_timerfd_gettime();
+void SYS_IMP_utimensat();
+void SYS_IMP_acct();
+void SYS_IMP_capget();
+void SYS_IMP_capset();
+void SYS_IMP_personality();
+void SYS_IMP_exit();
+void SYS_IMP_exit_group();
+void SYS_IMP_waitid();
+void SYS_IMP_set_tid_address();
+void SYS_IMP_unshare();
+void SYS_IMP_futex();
+void SYS_IMP_set_robust_list();
+void SYS_IMP_get_robust_list();
+void SYS_IMP_nanosleep();
+void SYS_IMP_getitimer();
+void SYS_IMP_setitimer();
+void SYS_IMP_kexec_load();
+void SYS_IMP_init_module();
+void SYS_IMP_delete_module();
+void SYS_IMP_timer_create();
+void SYS_IMP_timer_gettime();
+void SYS_IMP_timer_getoverrun();
+void SYS_IMP_timer_settime();
+void SYS_IMP_timer_delete();
+void SYS_IMP_clock_settime();
+void SYS_IMP_clock_gettime();
+void SYS_IMP_clock_getres();
+void SYS_IMP_clock_nanosleep();
+void SYS_IMP_syslog();
+void SYS_IMP_ptrace();
+void SYS_IMP_sched_setparam();
+void SYS_IMP_sched_setscheduler();
+void SYS_IMP_sched_getscheduler();
+void SYS_IMP_sched_getparam();
+void SYS_IMP_sched_setaffinity();
+void SYS_IMP_sched_getaffinity();
+void SYS_IMP_sched_yield();
+void SYS_IMP_sched_get_priority_max();
+void SYS_IMP_sched_get_priority_min();
+void SYS_IMP_sched_rr_get_interval();
+void SYS_IMP_restart_syscall();
+void SYS_IMP_kill();
+void SYS_IMP_tkill();
+void SYS_IMP_tgkill();
+void SYS_IMP_sigaltstack();
+void SYS_IMP_rt_sigsuspend();
+void SYS_IMP_rt_sigaction();
+void SYS_IMP_rt_sigprocmask();
+void SYS_IMP_rt_sigpending();
+void SYS_IMP_rt_sigtimedwait();
+void SYS_IMP_rt_sigqueueinfo();
+void SYS_IMP_rt_sigreturn();
+void SYS_IMP_setpriority();
+void SYS_IMP_getpriority();
+void SYS_IMP_reboot();
+void SYS_IMP_setregid();
+void SYS_IMP_setgid();
+void SYS_IMP_setreuid();
+void SYS_IMP_setuid();
+void SYS_IMP_setresuid();
+void SYS_IMP_getresuid();
+void SYS_IMP_setresgid();
+void SYS_IMP_getresgid();
+void SYS_IMP_setfsuid();
+void SYS_IMP_setfsgid();
+void SYS_IMP_times();
+void SYS_IMP_setpgid();
+void SYS_IMP_getpgid();
+void SYS_IMP_getsid();
+void SYS_IMP_setsid();
+void SYS_IMP_getgroups();
+void SYS_IMP_setgroups();
+void SYS_IMP_uname();
+void SYS_IMP_sethostname();
+void SYS_IMP_setdomainname();
+void SYS_IMP_getrlimit();
+void SYS_IMP_setrlimit();
+void SYS_IMP_getrusage();
+void SYS_IMP_umask();
+void SYS_IMP_prctl();
+void SYS_IMP_getcpu();
+void SYS_IMP_gettimeofday();
+void SYS_IMP_settimeofday();
+void SYS_IMP_adjtimex();
+void SYS_IMP_getpid();
+void SYS_IMP_getppid();
+void SYS_IMP_getuid();
+void SYS_IMP_geteuid();
+void SYS_IMP_getgid();
+void SYS_IMP_getegid();
+void SYS_IMP_gettid();
+void SYS_IMP_sysinfo();
+void SYS_IMP_mq_open();
+void SYS_IMP_mq_unlink();
+void SYS_IMP_mq_timedsend();
+void SYS_IMP_mq_timedreceive();
+void SYS_IMP_mq_notify();
+void SYS_IMP_mq_getsetattr();
+void SYS_IMP_msgget();
+void SYS_IMP_msgctl();
+void SYS_IMP_msgrcv();
+void SYS_IMP_msgsnd();
+void SYS_IMP_semget();
+void SYS_IMP_semctl();
+void SYS_IMP_semtimedop();
+void SYS_IMP_semop();
+void SYS_IMP_shmget();
+void SYS_IMP_shmctl();
+void SYS_IMP_shmat();
+void SYS_IMP_shmdt();
+void SYS_IMP_socket();
+void SYS_IMP_socketpair();
+void SYS_IMP_bind();
+void SYS_IMP_listen();
+void SYS_IMP_accept();
+void SYS_IMP_connect();
+void SYS_IMP_getsockname();
+void SYS_IMP_getpeername();
+void SYS_IMP_sendto();
+void SYS_IMP_recvfrom();
+void SYS_IMP_setsockopt();
+void SYS_IMP_getsockopt();
+void SYS_IMP_shutdown();
+void SYS_IMP_sendmsg();
+void SYS_IMP_recvmsg();
+void SYS_IMP_readahead();
+void SYS_IMP_brk();
+void SYS_IMP_munmap();
+void SYS_IMP_mremap();
+void SYS_IMP_add_key();
+void SYS_IMP_request_key();
+void SYS_IMP_keyctl();
+void SYS_IMP_clone();
+void SYS_IMP_execve();
+void SYS_IMP_mmap();
+void SYS_IMP_fadvise64();
+void SYS_IMP_swapon();
+void SYS_IMP_swapoff();
+void SYS_IMP_mprotect();
+void SYS_IMP_msync();
+void SYS_IMP_mlock();
+void SYS_IMP_munlock();
+void SYS_IMP_mlockall();
+void SYS_IMP_munlockall();
+void SYS_IMP_mincore();
+void SYS_IMP_madvise();
+void SYS_IMP_remap_file_pages();
+void SYS_IMP_mbind();
+void SYS_IMP_get_mempolicy();
+void SYS_IMP_set_mempolicy();
+void SYS_IMP_migrate_pages();
+void SYS_IMP_move_pages();
+void SYS_IMP_rt_tgsigqueueinfo();
+void SYS_IMP_perf_event_open();
+void SYS_IMP_accept4();
+void SYS_IMP_recvmmsg();
+void SYS_IMP_wait4();
+void SYS_IMP_prlimit64();
+void SYS_IMP_fanotify_init();
+void SYS_IMP_fanotify_mark();
+void SYS_IMP_name_to_handle_at();
+void SYS_IMP_open_by_handle_at();
+void SYS_IMP_clock_adjtime();
+void SYS_IMP_syncfs();
+void SYS_IMP_setns();
+void SYS_IMP_sendmmsg();
+void SYS_IMP_process_vm_readv();
+void SYS_IMP_process_vm_writev();
+void SYS_IMP_kcmp();
+void SYS_IMP_finit_module();
+void SYS_IMP_sched_setattr();
+void SYS_IMP_sched_getattr();
+void SYS_IMP_renameat2();
+void SYS_IMP_seccomp();
+void SYS_IMP_getrandom();
+void SYS_IMP_memfd_create();
+void SYS_IMP_bpf();
+void SYS_IMP_execveat();
+void SYS_IMP_userfaultfd();
+void SYS_IMP_membarrier();
+void SYS_IMP_mlock2();
+void SYS_IMP_copy_file_range();
+void SYS_IMP_preadv2();
+void SYS_IMP_pwritev2();
+void SYS_IMP_pkey_mprotect();
+void SYS_IMP_pkey_alloc();
+void SYS_IMP_pkey_free();
+void SYS_IMP_statx();
+void SYS_IMP_io_pgetevents();
+void SYS_IMP_rseq();
+void SYS_IMP_kexec_file_load();
+void SYS_IMP_pidfd_send_signal();
+void SYS_IMP_io_uring_setup();
+void SYS_IMP_io_uring_enter();
+void SYS_IMP_io_uring_register();
+void SYS_IMP_open_tree();
+void SYS_IMP_move_mount();
+void SYS_IMP_fsopen();
+void SYS_IMP_fsconfig();
+void SYS_IMP_fsmount();
+void SYS_IMP_fspick();
+void SYS_IMP_pidfd_open();
+void SYS_IMP_clone3();
+void SYS_IMP_close_range();
+void SYS_IMP_openat2();
+void SYS_IMP_pidfd_getfd();
+void SYS_IMP_faccessat2();
+void SYS_IMP_process_madvise();
 

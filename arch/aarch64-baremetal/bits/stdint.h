@@ -1,0 +1,2 @@
+#define SIZE_MAX __SIZE_MAX__
+#define PTRDIFF_MAX __PTRDIFF_MAX__
