@@ -1,4 +1,4 @@
-struct stat {
+struct kstat {
 	dev_t st_dev;
 	ino_t st_ino;
 	mode_t st_mode;
@@ -11,8 +11,11 @@ struct stat {
 	blksize_t st_blksize;
 	int __pad2;
 	blkcnt_t st_blocks;
-	struct timespec st_atim;
-	struct timespec st_mtim;
-	struct timespec st_ctim;
+	long st_atime_sec;
+	long st_atime_nsec;
+	long st_mtime_sec;
+	long st_mtime_nsec;
+	long st_ctime_sec;
+	long st_ctime_nsec;
 	unsigned __unused[2];
 };
