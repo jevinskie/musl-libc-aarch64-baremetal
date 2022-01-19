@@ -338,6 +338,7 @@ powerpc*|ppc*) ARCH=powerpc ;;
 riscv64*) ARCH=riscv64 ;;
 sh[1-9bel-]*|sh|superh*) ARCH=sh ;;
 s390x*) ARCH=s390x ;;
+aarch64-baremetal*) ARCH=aarch64-baremetal ;;
 unknown) fail "$0: unable to detect target arch; try $0 --target=..." ;;
 *) fail "$0: unknown or unsupported target \"$target\"" ;;
 esac
@@ -595,6 +596,8 @@ tryldflag LDFLAGS_AUTO -Wl,--dynamic-list="$srcdir/dynamic.list"
 test -z "$LIBCC" && tryldflag LIBCC -lgcc && tryldflag LIBCC -lgcc_eh
 test -z "$LIBCC" && tryldflag LIBCC -lcompiler_rt
 test -z "$LIBCC" && try_libcc=`$CC -print-libgcc-file-name 2>/dev/null` \
+                 && tryldflag LIBCC "$try_libcc"
+test -z "$LIBCC" && try_libcc=`$CC -print-file-name=libclang_rt.builtins-aarch64.a 2>/dev/null` \
                  && tryldflag LIBCC "$try_libcc"
 test -z "$LIBCC" && try_libcc=`$CC -print-file-name=libpcc.a 2>/dev/null` \
                  && tryldflag LIBCC "$try_libcc"
