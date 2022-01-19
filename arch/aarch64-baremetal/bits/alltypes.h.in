@@ -1,6 +1,6 @@
-#define _Addr long
-#define _Int64 long
-#define _Reg long
+#define _Addr __INT64_TYPE__
+#define _Int64 __INT64_TYPE__
+#define _Reg __INT64_TYPE__
 
 #if __AARCH64EB__
 #define __BYTE_ORDER 4321
@@ -8,12 +8,12 @@
 #define __BYTE_ORDER 1234
 #endif
 
-#define __LONG_MAX 0x7fffffffffffffffL
+#define __LONG_MAX __LONG_MAX__
 
 #ifndef __cplusplus
-TYPEDEF unsigned wchar_t;
+TYPEDEF __WCHAR_TYPE__ wchar_t;
 #endif
-TYPEDEF unsigned wint_t;
+TYPEDEF __WINT_TYPE__ wint_t;
 
 TYPEDEF int blksize_t;
 TYPEDEF unsigned int nlink_t;
