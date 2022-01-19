@@ -322,6 +322,7 @@ printf "%s\n" "$target"
 case "$target" in
 # Catch these early to simplify matching for 32-bit archs
 arm*) ARCH=arm ;;
+aarch64-baremetal) ARCH=aarch64-baremetal ;;
 aarch64*) ARCH=aarch64 ;;
 i?86-nt32*) ARCH=nt32 ;;
 i?86*) ARCH=i386 ;;
@@ -338,7 +339,6 @@ powerpc*|ppc*) ARCH=powerpc ;;
 riscv64*) ARCH=riscv64 ;;
 sh[1-9bel-]*|sh|superh*) ARCH=sh ;;
 s390x*) ARCH=s390x ;;
-aarch64-baremetal*) ARCH=aarch64-baremetal ;;
 unknown) fail "$0: unable to detect target arch; try $0 --target=..." ;;
 *) fail "$0: unknown or unsupported target \"$target\"" ;;
 esac
