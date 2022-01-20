@@ -395,4 +395,8 @@ hidden void __procfdname(char __buf[static 15+3*sizeof(int)], unsigned);
 
 hidden void *__vdsosym(const char *, const char *);
 
+#if __has_include("syscall_arch_post.h")
+#include "syscall_arch_post.h"
+#endif
+
 #endif
