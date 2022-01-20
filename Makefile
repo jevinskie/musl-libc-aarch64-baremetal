@@ -34,7 +34,7 @@ CRT_OBJS = $(filter obj/crt/%,$(ALL_OBJS))
 
 AOBJS = $(LIBC_OBJS)
 LOBJS = $(LIBC_OBJS:.o=.lo)
-GENH = obj/include/bits/alltypes.h obj/include/bits/syscall.h
+GENH = obj/include/bits/alltypes.h obj/include/bits/syscall.h obj/include/_musl_version.h
 GENH_INT = obj/src/internal/version.h
 IMPH = $(addprefix $(srcdir)/, src/internal/stdio_impl.h src/internal/pthread_impl.h src/internal/locale_impl.h src/internal/libc.h)
 
@@ -104,6 +104,9 @@ obj/include/bits/syscall.h: $(srcdir)/arch/$(ARCH)/bits/syscall.h.in
 
 obj/src/internal/version.h: $(wildcard $(srcdir)/VERSION $(srcdir)/.git)
 	printf '#define VERSION "%s"\n' "$$(cd $(srcdir); sh tools/version.sh)" > $@
+
+obj/include/_musl_version.h: $(wildcard $(srcdir)/VERSION $(srcdir)/.git)
+	printf '#define MUSL_VERSION "%s"\n' "$$(cd $(srcdir); sh tools/version.sh)" > $@
 
 obj/src/internal/version.o obj/src/internal/version.lo: obj/src/internal/version.h
 
@@ -204,6 +207,9 @@ $(DESTDIR)$(includedir)/bits/%: $(srcdir)/arch/generic/bits/%
 	$(INSTALL) -D -m 644 $< $@
 
 $(DESTDIR)$(includedir)/bits/%: obj/include/bits/%
+	$(INSTALL) -D -m 644 $< $@
+
+$(DESTDIR)$(includedir)/%: obj/include/%
 	$(INSTALL) -D -m 644 $< $@
 
 $(DESTDIR)$(includedir)/%: $(srcdir)/include/%
