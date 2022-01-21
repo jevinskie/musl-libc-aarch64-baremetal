@@ -1,3 +1,4 @@
+#include <string.h>
 #include "atomic.h"
 #include "libc.h"
 
@@ -7,8 +8,8 @@ extern weak hidden void (*const __init_array_start)(void), (*const __init_array_
 #define EMBCUST_MAX_ENVP EMBCUST_MAX_ARGV
 #define EMBCUST_MAX_INIT_STRPOOL 4096
 
-extern const char * const *__embcust_argv;
-extern const char * const *__embcust_environ;
+extern const char **__embcust_argv;
+extern const char **__embcust_environ;
 
 char *__embcust_argv_rw[EMBCUST_MAX_ARGV];
 char *__embcust_environ_rw[EMBCUST_MAX_ENVP];
@@ -17,7 +18,6 @@ char __embcust_init_strpool[EMBCUST_MAX_INIT_STRPOOL];
 
 static void libc_start_embcust_init(void)
 {
-    _init();
     uintptr_t a = (uintptr_t)&__init_array_start;
     for (; a<(uintptr_t)&__init_array_end; a+=sizeof(void(*)()))
         (*(void (**)(void))a)();
@@ -29,37 +29,33 @@ static lsm2_fn libc_start_embcust_stage2;
 int __libc_start_embcust(void)
 {
     int argc = 0;
-    for (const char *arg = __embcust_argv; arg; ++argc);
+    for (const char **arg = __embcust_argv; *arg; ++argc);
     if (argc + 1 > EMBCUST_MAX_ARGV)
-        a_crash();
+        __builtin_trap();
 
     int envc = 0;
-    for (const char *env = __embcust_environ; env; ++envc);
+    for (const char **env = __embcust_environ; *env; ++envc);
     if (envc + 1 > EMBCUST_MAX_ENVP)
-        a_crash();
+        __builtin_trap();
 
-    char const *strpool_end = __embcust_init_strpool + sizeof(__embcust_init_strpool);
+    char *strpool_end = __embcust_init_strpool + sizeof(__embcust_init_strpool);
     char *strpool = __embcust_init_strpool;
     for (int i = 0; i < argc; ++i) {
         size_t len = strlen(__embcust_argv[i]);
         if (strpool + len + 1 >= strpool_end)
-            a_crash();
-        memcpy(strpool, __embcust_argv[i], len);
+            __builtin_trap();
+        memcpy(strpool, __embcust_argv[i], len + 1);
         __embcust_argv_rw[i] = strpool;
-        strpool += len;
-        *strpool = '\0';
-        ++strpool;
+        strpool += len + 1;
     }
     __embcust_argv_rw[argc] = NULL;
     for (int i = 0; i < envc; ++i) {
         size_t len = strlen(__embcust_environ[i]);
         if (strpool + len + 1 >= strpool_end)
-            a_crash();
-        memcpy(strpool, __embcust_environ[i], len);
+            __builtin_trap();
+        memcpy(strpool, __embcust_environ[i], len + 1);
         __embcust_environ_rw[i] = strpool;
-        strpool += len;
-        *strpool = '\0';
-        ++strpool;
+        strpool += len + 1;
     }
     __embcust_environ_rw[envc] = NULL;
 
