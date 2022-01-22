@@ -2,7 +2,7 @@
 #include "atomic.h"
 #include "libc.h"
 
-extern void (*const __init_array_start)(void), (*const __init_array_end)(void);
+extern void (*const *__init_array_embcust_start)(void), (*const *__init_array_embcust_end)(void);
 
 const size_t *_DYNAMIC = NULL;
 
@@ -20,8 +20,8 @@ static char __embcust_init_strpool[EMBCUST_MAX_INIT_STRPOOL];
 
 static void libc_start_embcust_init(void)
 {
-    uintptr_t a = (uintptr_t)&__init_array_start;
-    for (; a<(uintptr_t)&__init_array_end; a+=sizeof(void(*)()))
+    uintptr_t a = (uintptr_t)__init_array_embcust_start;
+    for (; a<(uintptr_t)__init_array_embcust_end; a+=sizeof(void(*)()))
         (*(void (**)(void))a)();
 }
 
