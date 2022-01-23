@@ -2,8 +2,7 @@
 
 int __set_thread_area(void *p)
 {
-    if (p != __builtin_tls) {
+    if (p != TP_ADJ(&__builtin_tls[0].pt))
         return -ESRCH;
-    }
     return 0;
 }

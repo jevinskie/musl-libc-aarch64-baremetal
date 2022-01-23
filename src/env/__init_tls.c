@@ -138,7 +138,7 @@ static void static_init_tls(size_t *aux)
 		 * so don't bloat the init code checking for error codes and
 		 * explicitly calling a_crash(). */
 	} else {
-		mem = __builtin_tls;
+		mem = &__builtin_tls[0].pt;
 	}
 
 	/* Failure to initialize thread pointer is always fatal. */
