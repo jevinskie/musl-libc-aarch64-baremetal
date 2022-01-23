@@ -202,4 +202,15 @@ extern hidden unsigned __default_guardsize;
 
 #define __ATTRP_C11_THREAD ((void*)(uintptr_t)-1)
 
+struct __builtin_tls {
+    char c;
+    struct pthread pt;
+    void *space[512];
+};
+extern struct __builtin_tls __builtin_tls[1];
+
+#if __has_include("pthread_arch_post.h")
+#include "pthread_arch_post.h"
+#endif
+
 #endif

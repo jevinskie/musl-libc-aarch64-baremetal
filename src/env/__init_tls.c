@@ -16,23 +16,19 @@ int __init_tp(void *p)
 	pthread_t td = p;
 	td->self = td;
 	int r = __set_thread_area(TP_ADJ(p));
-	if (r < 0) return -1;
-	if (!r) libc.can_do_threads = 1;
-	td->detach_state = DT_JOINABLE;
-	td->tid = __syscall(SYS_set_tid_address, &__thread_list_lock);
-	td->locale = &libc.global_locale;
-	td->robust_list.head = &td->robust_list.head;
-	td->sysinfo = __sysinfo;
-	td->next = td->prev = td;
+	// if (r < 0) return -1;
+	// if (!r) libc.can_do_threads = 1;
+	// td->detach_state = DT_JOINABLE;
+	// td->tid = __syscall(SYS_set_tid_address, &__thread_list_lock);
+	// td->locale = &libc.global_locale;
+	// td->robust_list.head = &td->robust_list.head;
+	// td->sysinfo = __sysinfo;
+	// td->next = td->prev = td;
 	return 0;
 }
 
-static struct builtin_tls {
-	char c;
-	struct pthread pt;
-	void *space[16];
-} builtin_tls[1];
-#define MIN_TLS_ALIGN offsetof(struct builtin_tls, pt)
+struct __builtin_tls __builtin_tls[1];
+#define MIN_TLS_ALIGN offsetof(struct __builtin_tls, pt)
 
 static struct tls_module main_tls;
 
@@ -130,7 +126,7 @@ static void static_init_tls(size_t *aux)
 		+ main_tls.size + main_tls.align
 		+ MIN_TLS_ALIGN-1 & -MIN_TLS_ALIGN;
 
-	if (libc.tls_size > sizeof builtin_tls) {
+	if (libc.tls_size > sizeof __builtin_tls) {
 #ifndef SYS_mmap2
 #define SYS_mmap2 SYS_mmap
 #endif
@@ -142,7 +138,7 @@ static void static_init_tls(size_t *aux)
 		 * so don't bloat the init code checking for error codes and
 		 * explicitly calling a_crash(). */
 	} else {
-		mem = builtin_tls;
+		mem = __builtin_tls;
 	}
 
 	/* Failure to initialize thread pointer is always fatal. */

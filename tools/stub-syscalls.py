@@ -16,7 +16,7 @@ def main(orig_hdr_in, stub_hdr_out):
 
     with open(stub_hdr_out, 'w') as f:
         for syscall in sysdefs.keys():
-            print(f"#define SYS_{syscall} SYS_IMP_{syscall}", file=f)
+            print(f"#define SYS_{syscall} ((long)SYS_IMP_{syscall})", file=f)
         print("\n\n\n", file=f)
         for syscall in sysdefs.keys():
             print(f"void SYS_IMP_{syscall}();", file=f)
