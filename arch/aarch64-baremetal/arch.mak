@@ -5,7 +5,7 @@ BASE_SRCS := $(filter-out $(srcdir)/src/exit/exit.c,$(BASE_SRCS))
 
 LDFLAGS_ALL += -Wl,--unresolved-symbols=ignore-all
 
-CFLAGS_ALL += -Os
+# CFLAGS_ALL += -Os
 # CFLAGS_ALL += -O0
 CFLAGS_ALL += -g
 CFLAGS_ALL += -fPIC
