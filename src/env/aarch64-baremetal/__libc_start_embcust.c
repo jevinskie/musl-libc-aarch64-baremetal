@@ -13,9 +13,9 @@ typedef struct {
   size_t val;
 } auxv_t;
 
-extern const char **__embcust_argv;
-extern const char **__embcust_environ;
-extern const auxv_t *__embcust_auxv;
+extern const char *__embcust_argv[];
+extern const char *__embcust_environ[];
+extern const auxv_t __embcust_auxv[];
 
 
 static char __embcust_init_stack[EMBCUST_MAX_INIT_STACK];
