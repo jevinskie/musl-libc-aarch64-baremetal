@@ -58,6 +58,10 @@ hidden long __syscall_ret(unsigned long),
 #define __syscall_cp(...) __SYSCALL_DISP(__syscall_cp,__VA_ARGS__)
 #define syscall_cp(...) __syscall_ret(__syscall_cp(__VA_ARGS__))
 
+#if __has_include("syscall_arch_post.h")
+#include "syscall_arch_post.h"
+#endif
+
 static inline long __alt_socketcall(int sys, int sock, int cp, syscall_arg_t a, syscall_arg_t b, syscall_arg_t c, syscall_arg_t d, syscall_arg_t e, syscall_arg_t f)
 {
 	long r;
@@ -394,9 +398,5 @@ static inline long __alt_socketcall(int sys, int sock, int cp, syscall_arg_t a, 
 hidden void __procfdname(char __buf[static 15+3*sizeof(int)], unsigned);
 
 hidden void *__vdsosym(const char *, const char *);
-
-#if __has_include("syscall_arch_post.h")
-#include "syscall_arch_post.h"
-#endif
 
 #endif
