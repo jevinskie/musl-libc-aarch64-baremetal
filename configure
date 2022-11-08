@@ -321,6 +321,7 @@ printf "%s\n" "$target"
 #
 case "$target" in
 # Catch these early to simplify matching for 32-bit archs
+arm64-baremetal) ARCH=aarch64-baremetal ;;
 arm*) ARCH=arm ;;
 aarch64-baremetal) ARCH=aarch64-baremetal ;;
 aarch64*) ARCH=aarch64 ;;
