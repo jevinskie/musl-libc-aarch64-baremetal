@@ -561,6 +561,17 @@ tryflag CFLAGS_AUTO -Wunused-label
 tryflag CFLAGS_AUTO -Wunused-variable
 fi
 
+# Determine the binary file format
+if trycppif __ELF__ "$CFLAGS_C99FSE $CPPFLAGS $CFLAGS" ; then
+bin_format=elf
+else
+if trycppif __APPLE__ "$CFLAGS_C99FSE $CPPFLAGS $CFLAGS" ; then
+bin_format=macho
+else
+bin_format=unknown
+fi
+fi
+
 # Determine if the compiler produces position-independent code (PIC)
 # by default. If so, we don't need to compile separate object files
 # for libc.a and libc.so.
@@ -806,6 +817,7 @@ ALL_TOOLS = $tools
 TOOL_LIBS = $tool_libs
 ADD_CFI = $ADD_CFI
 MALLOC_DIR = $malloc_dir
+BINFMT = $bin_format
 EOF
 test "x$static" = xno && echo "STATIC_LIBS ="
 test "x$shared" = xno && echo "SHARED_LIBS ="

@@ -16,8 +16,21 @@ OPTIMIZE_GLOBS =
 
 STATIC_LIBS += lib/libc.o
 
+LIBC_O_LD := $(CC)
+NOSTDLIB_FLAG := -nostdlib
+RELOCATABLE_FLAG := -Wl,-r
+WHOLE_ARCHIVE_FLAG_START := -Wl,--whole-archive
+WHOLE_ARCHIVE_FLAG_END := -Wl,--no-whole-archive
+ifeq ($(BINFMT),macho)
+	NOSTDLIB_FLAG :=
+	RELOCATABLE_FLAG := -r
+	WHOLE_ARCHIVE_FLAG_START := -force_load
+	WHOLE_ARCHIVE_FLAG_END :=
+	LIBC_O_LD := $(shell xcrun -f ld) -arch arm64
+endif
+
 lib/libc.o: lib/libc.a
-	$(CC) -nostdlib -Wl,-r -o $@ -Wl,--whole-archive lib/libc.a -Wl,--no-whole-archive $(LIBCC)
+	$(LIBC_O_LD) $(NOSTDLIB_FLAG) $(RELOCATABLE_FLAG) -o $@ $(WHOLE_ARCHIVE_FLAG_START) lib/libc.a $(WHOLE_ARCHIVE_FLAG_END) $(LIBCC)
 
 print-%:
 	@echo $* = $($*)

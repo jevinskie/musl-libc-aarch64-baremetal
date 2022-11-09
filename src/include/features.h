@@ -6,12 +6,10 @@
 #define weak __attribute__((__weak__))
 #define hidden __attribute__((__visibility__("hidden")))
 #ifndef __APPLE__
-#define weak_alias(old, new) \
-	extern __typeof(old) new __attribute__((__weak__, __alias__(#old)))
+#define weak_alias(old_sym, new_sym) \
+	extern __typeof(old_sym) new_sym __attribute__((__weak__, __alias__(#old_sym)))
 #else
-#define weak_alias(old, new) \
-	__asm__(".globl _" #new); \
-	__asm__("_" #new " = _" #old); \
-	extern __typeof(old) new __attribute__((weak_import))
+#define weak_alias(old_sym, new_sym) \
+	extern __typeof(old_sym) new_sym __attribute__((__weak__))
 #endif
 #endif
