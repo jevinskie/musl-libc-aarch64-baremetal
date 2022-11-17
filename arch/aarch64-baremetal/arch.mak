@@ -7,12 +7,13 @@ LDFLAGS_ALL += -Wl,--unresolved-symbols=ignore-all
 
 # CFLAGS_ALL += -Os
 # CFLAGS_ALL += -O0
-CFLAGS_ALL += -g
+CFLAGS_ALL += -ggdb3
 CFLAGS_ALL += -fPIC
 # CFLAGS_ALL += -flto=full
+CFLAGS_ALL += -Oz
 
 # nuke and build everything at our chosen opt level above
-OPTIMIZE_GLOBS =
+OPTIMIZE_GLOBS :=
 
 STATIC_LIBS += lib/libc.o
 
@@ -22,11 +23,11 @@ RELOCATABLE_FLAG := -Wl,-r
 WHOLE_ARCHIVE_FLAG_START := -Wl,--whole-archive
 WHOLE_ARCHIVE_FLAG_END := -Wl,--no-whole-archive
 ifeq ($(BINFMT),macho)
+	LIBC_O_LD := $(shell xcrun -f ld) -arch arm64
 	NOSTDLIB_FLAG :=
 	RELOCATABLE_FLAG := -r
 	WHOLE_ARCHIVE_FLAG_START := -force_load
 	WHOLE_ARCHIVE_FLAG_END :=
-	LIBC_O_LD := $(shell xcrun -f ld) -arch arm64
 endif
 
 lib/libc.o: lib/libc.a

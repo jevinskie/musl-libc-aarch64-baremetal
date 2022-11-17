@@ -1,3 +1,4 @@
+#ifndef __APPLE__
 __asm__(
 ".text \n"
 ".global " START "\n"
@@ -13,3 +14,15 @@ START ":\n"
 "	and sp, x0, #-16\n"
 "	b " START "_c\n"
 );
+#else
+__asm__(
+"\t.section\t__TEXT,__text,regular,pure_instructions\n\t"
+"\t.global _" START "\n"
+"_" START ":\n\t"
+"mov x29, #0\n\t"
+"mov x30, #0\n\t"
+"mov x0, sp\n\t"
+"and sp, x0, #-16\n\t"
+"b _" START "_c\n\t"
+);
+#endif

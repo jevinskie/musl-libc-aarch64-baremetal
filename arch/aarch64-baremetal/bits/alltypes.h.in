@@ -1,6 +1,9 @@
 #define _Addr __INT64_TYPE__
 #define _Int64 __INT64_TYPE__
 #define _Reg __INT64_TYPE__
+#ifdef __APPLE__
+#define _Size_define __INTPTR_TYPE__
+#endif
 
 #if __AARCH64EB__
 #define __BYTE_ORDER 4321

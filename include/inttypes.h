@@ -23,8 +23,13 @@ intmax_t wcstoimax(const wchar_t *__restrict, wchar_t **__restrict, int);
 uintmax_t wcstoumax(const wchar_t *__restrict, wchar_t **__restrict, int);
 
 #if UINTPTR_MAX == UINT64_MAX
+#ifndef __APPLE__
 #define __PRI64  "l"
 #define __PRIPTR "l"
+#else
+#define __PRI64  "ll"
+#define __PRIPTR "l"
+#endif
 #else
 #define __PRI64  "ll"
 #define __PRIPTR ""
